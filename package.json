@@ -1,0 +1,27 @@
+{
+    "name": "wow-gear-analyzer",
+    "version": "1.0.0",
+    "description": "A gear analyzer for the MMO - World of Warcraft. A way to facilitate the manner in which you compare gear; through the means of filters (ToS only for the time being, with the addition of dugeons (normal, heroic, and mythic), and possibly previous raids (if there's a high enough demand for it).",
+    "main": "app.js",
+    "dependencies": {
+        "bulma": "^0.5.3",
+        "gulp": "*",
+        "gulp-watch": "*",
+        "gulp-rename": "*",
+        "gulp-sass": "*",
+        "gulp-clean-css": "*",
+        "gulp-autoprefixer": "*",
+        "gulp-uglify": "*",
+        "gulp-concat": "*",
+        "gulp-imagemin": "^3.0.1"
+    },
+    "devDependencies": {
+        "gulp": "^3.9.1",
+        "gulp-sass": "^3.1.0"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Victor Marquez",
+    "license": "ISC"
+}
