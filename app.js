@@ -1,6 +1,5 @@
 const config = {
     API_KEY: "8k7kh3mvnanft46vcqv93ezgagcm2qsw",
-    LOCALE: "en_us",
     FIELDS: ["items+", "professions+", "stats+", "talents"]
 };
 
@@ -80,7 +79,7 @@ function createItemRow(item) {
     return row;
 }
 
-class App {
+class characterItems {
     constructor(element) {
         this.element = element;
         this.form = this.element.querySelector(".search-character");
@@ -153,4 +152,4 @@ class App {
 }
 
 const app = document.querySelector(".app");
-new App(app);
+new characterItems(app);
