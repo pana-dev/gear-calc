@@ -1,12 +1,28 @@
 const config = {
-    BASE_URL: "https://us.api.battle.net/wow/",
     API_KEY: "8k7kh3mvnanft46vcqv93ezgagcm2qsw",
     LOCALE: "en_us",
     FIELDS: ["items+", "professions+", "stats+", "talents"]
 };
 
-function configureUrl(realmInput, characterInput) {
-    return `${config.BASE_URL}/character/${realmInput.value}/${characterInput.value}?fields=${config.FIELDS}&locale=${config.LOCALE}&apikey=${config.API_KEY}`;
+function configureUrl(realmInput, characterInput, regionInput) {
+
+    if (regionInput == 'en_us') {
+        var base_url = 'us';
+    }
+
+    if (regionInput == 'en_GB') {
+        var base_url = 'eu';
+    }
+
+    if (regionInput == 'ko_KR') {
+        var base_url = 'kr';
+    }
+
+    if (regionInput == 'zh_TW') {
+        var base_url = 'tw'
+    }
+
+    return `https://${base_url}.api.battle.net/wow/character/${realmInput.value}/${characterInput.value}?fields=${config.FIELDS}&locale=${regionInput}&apikey=${config.API_KEY}`;
 }
 
 function createItemRow(item) {
@@ -71,6 +87,7 @@ class App {
         this.button = this.element.querySelector(".app-button");
         this.characterInput = this.element.querySelector("#character");
         this.realmInput = this.element.querySelector("#realm");
+        this.regionInput = this.element.querySelector("#region");
         this.dataWrap = this.element.querySelector(".app-data");
         this.init();
     }
@@ -122,7 +139,7 @@ class App {
         // Cheap loading flag
         this.dataWrap.classList.add('is-loading');
 
-        fetch(configureUrl(this.realmInput, this.characterInput))
+        fetch(configureUrl(this.realmInput, this.characterInput, this.regionInput.value))
             .then(response => response.json())
             .then((characterData) => {
                 this.dataWrap.classList.remove('is-loading');
