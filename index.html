@@ -30,12 +30,6 @@
                 <span style="font-size: 20px; font-weight:600; margin-right: 6px; color: #16a085;">KRAKEN</span>/ gear.analyzer
             </a>
 
-            <a class="navbar-item is-hidden-desktop" href="https://github.com/jgthms/bulma" target="_blank">
-                <span class="icon" style="color: #333;">
-                      <i class="fa fa-lg fa-github"></i>
-                    </span>
-            </a>
-
             <a class="navbar-item is-hidden-desktop" href="https://twitter.com/jgthms" target="_blank">
                 <span class="icon" style="color: #55acee;">
                       <i class="fa fa-lg fa-twitter"></i>
@@ -61,18 +55,18 @@
                         </a>
                     </div>
                 </div> -->
-                <div class="navbar-item is-hidden-desktop-only">
-                    <form action="/" class="search-character">
+                <div class="navbar-item is-hidden-desktop-only" id="searchCharacter">
+                    <form action="/" id="formCharacter">
                         <div class="field has-addons">
                             <p class="control">
-                                <input class="input" id="character" type="text" placeholder="Name">
+                                <input class="input" id="characterName" type="text" value="Ogpana" placeholder="Name">
                             </p>
                             <p class="control">
-                                <input class="input" id="realm" type="text" placeholder="Server">
+                                <input class="input" id="characterRealm" type="text" value="Bleeding Hollow" placeholder="Server">
                             </p>
                             <p class="control">
                                 <div class="select">
-                                    <select name="Region" id="region">
+                                    <select name="Region" id="characterRegion">
                                         <option value="en_us" data-region="na">NA</option>
                                         <option value="en_GB" data-region="eu">EU</option>
                                         <option value="ko_KR" data-region="kr">KR</option>
@@ -118,7 +112,7 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-one-quarter">
-                    <div class="panel app-data">
+                    <div class="panel" id="itemsArmory">
                         <div class="panel-heading">Items</div>
                         <div class="panel-block">
                             <p class="control">
