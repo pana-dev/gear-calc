@@ -1,6 +1,7 @@
 //////////////////////////////////////
 // Set API Key and Fields to return
 //////////////////////////////////////
+
 const API_KEY = "8k7kh3mvnanft46vcqv93ezgagcm2qsw";
 
 // Function that builds the API URL
@@ -29,6 +30,156 @@ function characterAPI(name, realm, region, field) {
     return `https://${base_url}.api.battle.net/wow/character/${realm}/${name}?fields=${field}&locale=${region}&apikey=${API_KEY}`;
 
 }
+
+// Item fetch 
+
+function itemAPI(id) {
+    
+    return `https://us.api.battle.net/wow/item/${id}&locale=en_US&apikey=${API_KEY}`;
+
+}
+
+// Stats mapping
+//////////////////////////////////////
+
+const STATS = [
+    {id: -1, stat: "None"},
+    {id: 0, stat: "Mana"},
+    {id: 1, stat: "Health"},
+    {id: 3, stat: "Agility"},
+    {id: 4, stat: "Strenght"},
+    {id: 5, stat: "Intellect"},
+    {id: 6, stat: "Spirit"},
+    {id: 7, stat: "Stamina"},
+    {id: 12, stat: "Defense Skill"},
+    {id: 13, stat: "Dodge"},
+    {id: 14, stat: "Parry"},
+    {id: 15, stat: "Block"},
+    {id: 16, stat: "Melee Hit"},
+    {id: 17, stat: "Ranged Hit"},
+    {id: 18, stat: "Spell Hit"},
+    {id: 19, stat: "Melee Crit"},
+    {id: 20, stat: "Ranged Crit"},
+    {id: 21, stat: "Spell Crit"},
+    {id: 22, stat: "Melee Hit Taken"},
+    {id: 23, stat: "Ranged Hit Taken"},
+    {id: 24, stat: "Spell Hit Taken"},
+    {id: 25, stat: "Melee Crit Taken"},
+    {id: 26, stat: "Ranged Crit Taken"},
+    {id: 27, stat: "Spell Crit Taken"},
+    {id: 28, stat: "Melee Haste"},
+    {id: 29, stat: "Ranged Haste"},
+    {id: 30, stat: "Spell Haste"},
+    {id: 31, stat: "Hit"},
+    {id: 32, stat: "Crit"},
+    {id: 33, stat: "Hit Taken"},
+    {id: 34, stat: "Crit Taken"},
+    {id: 35, stat: "Resilience"},
+    {id: 36, stat: "Haste"},
+    {id: 37, stat: "Expertise"},
+    {id: 38, stat: "Attack Power"},
+    {id: 39, stat: "Ranged Attack Power"},
+    {id: 40, stat: "Versatility"},
+    {id: 41, stat: "Spell Healing Done"},
+    {id: 42, stat: "Spell Damage Done"},
+    {id: 43, stat: "Mana Regeneration"},
+    {id: 44, stat: "Armor Penetration"},
+    {id: 45, stat: "Spell Power"},
+    {id: 46, stat: "Health Regen"},
+    {id: 47, stat: "Spell Penetration"},
+    {id: 48, stat: "Block Value"},
+    {id: 49, stat: "Mastery"},
+    {id: 50, stat: "Bonus Armor"},
+    {id: 51, stat: "Fire Resistance"},
+    {id: 52, stat: "Frost Resistance"},
+    {id: 53, stat: "Holy Resistance"},
+    {id: 54, stat: "Shadow Resistance"},
+    {id: 55, stat: "Nature Resistance"},
+    {id: 56, stat: "Arcane Resistance"},
+    {id: 57, stat: "PVP Power"},
+    {id: 59, stat: "Multistrike"},
+    {id: 60, stat: "Readiness"},
+    {id: 61, stat: "Speed"},
+    {id: 62, stat: "Leech"},
+    {id: 63, stat: "Avoidence"},
+    {id: 64, stat: "Indestructible"},
+    {id: 65, stat: "WOD_5"},
+    {id: 66, stat: "WOD_6"},
+    {id: 71, stat: "Strenght, Agility, Intelect"},
+    {id: 72, stat: "Strenght, Agility"},
+    {id: 73, stat: "Agility, Intelect"},
+    {id: 74, stat: "Strenght, Intelect"}
+];
+
+function statMapping(itemID) {
+    for(let i in STATS) {
+        let mappedStatID = STATS[i].id,
+            mappedStatName = STATS[i].stat;
+
+        if(itemID === mappedStatID) {
+            return mappedStatName;
+        }
+    }
+}
+
+function renderStats(item) {
+    for (let i in item.stats) {
+        
+        let stats = item.stats[i].stat,
+            statAmount = item.stats[i].amount;
+
+        console.log(statMapping(stats) + ": " + statAmount);
+        
+    }
+}
+
+// Raids
+//////////////////////////////////////
+
+const RAID_TOS_ITEMS = [
+    {id: 116407, name: "Harjatan", items: [
+        147020,
+        147071,
+        147100,
+        147002,
+        147045,
+        147109,
+        147092,
+        147000,
+        147037,
+        147029,
+        146994,
+        147043,
+        147067,
+        147135,
+        147141,
+        147159,
+        147177,
+        147164,
+        147182,
+        147146,
+        147189,
+        147129,
+        147171,
+        147153,
+        147123
+    ]}
+];
+
+function getBossItems(boss, id) {
+    for (let i in RAID_TOS_ITEMS) {
+
+        let bossId = RAID_TOS_ITEMS[i].id,
+            bossItems = RAID_TOS_ITEMS[i].items;
+        
+        if(boss === bossId) {
+            console.log(bossItems);
+        }
+
+    }
+}
+
+getBossItems(116407);
 
 // Function to create an item
 //////////////////////////////////////
@@ -97,6 +248,14 @@ function createRowItem(item) {
 // Fetch data and create items
 //////////////////////////////////////
 
+class bossItems {
+
+    constructor(element) {
+        this.element = element;
+    }
+
+}
+
 class characterItems {
 
     constructor(element) {
@@ -119,6 +278,8 @@ class characterItems {
                 continue;
             }
 
+            renderStats(item);
+
             const newRow = createRowItem(item);
             this.wrap.appendChild(newRow);
         }
@@ -137,7 +298,7 @@ class characterItems {
                 this.renderItems(data);
             })
             .catch((error) => {
-                console.log('Could not find character' + error.message);
+                console.log('Could not find character ' + error.message);
             });
 
     }
