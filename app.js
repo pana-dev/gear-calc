@@ -319,6 +319,7 @@ class characterTrinkets {
         this.element = element;
         this.formTrinkets = this.element.querySelector("#formTrinkets");
         this.trinketList = this.element.querySelector("#simcTrinkets");
+        this.trinketString = this.element.querySelector("#trinketString");
         this.init();
     }
 
@@ -327,9 +328,9 @@ class characterTrinkets {
         event.preventDefault();
         
         // Trinket String
-        //let dirtyTrinkets = "# Kil'jaeden's Burning Wish (1000)# trinket1=,id=144259,bonus_id=1811/3630## Engine of Eradication (915)# trinket1=,id=147015,bonus_id=3562/1497/3528## Royal Dagger Haft (895)# trinket1=,id=140791,bonus_id=3444/1492/3336## Animated Exoskeleton (920)# trinket1=,id=140789,bonus_id=3445/1517/3337## Darkmoon Deck: Immortality (900)# trinket1=,id=128711,bonus_id=689/601/679## Infernal Contract (905)# trinket1=,id=140807,bonus_id=3517/1502/3336## Horn of Valor (910)# trinket1=,id=133642,bonus_id=3573/1562/3528## Doomed Exarch's Memento (925)# trinket1=,id=153172,bonus_id=41/3573/1517/3337## Beguiler's Talisman (910)# trinket1=,id=147275,bonus_id=604/3573/3159/3528## Vial of Ceaseless Toxins (910)# trinket1=,id=147011,bonus_id=3573/1492/3528## Beguiler's Talisman (915)# trinket1=,id=147275,bonus_id=607/3573/3164/3336## Forgefiend's Fabricator (940)# trinket1=,id=151963,bonus_id=3610/1482/3336## Beguiler's Talisman (860)# trinket1=,id=147275,bonus_id=605/1808/3574/1652/3336";
+        let dirtyTrinkets = "# Kil'jaeden's Burning Wish (1000)# trinket1=,id=144259,bonus_id=1811/3630## Engine of Eradication (915)# trinket1=,id=147015,bonus_id=3562/1497/3528## Royal Dagger Haft (895)# trinket1=,id=140791,bonus_id=3444/1492/3336## Animated Exoskeleton (920)# trinket1=,id=140789,bonus_id=3445/1517/3337## Darkmoon Deck: Immortality (900)# trinket1=,id=128711,bonus_id=689/601/679## Infernal Contract (905)# trinket1=,id=140807,bonus_id=3517/1502/3336## Horn of Valor (910)# trinket1=,id=133642,bonus_id=3573/1562/3528## Doomed Exarch's Memento (925)# trinket1=,id=153172,bonus_id=41/3573/1517/3337## Beguiler's Talisman (910)# trinket1=,id=147275,bonus_id=604/3573/3159/3528## Vial of Ceaseless Toxins (910)# trinket1=,id=147011,bonus_id=3573/1492/3528## Beguiler's Talisman (915)# trinket1=,id=147275,bonus_id=607/3573/3164/3336## Forgefiend's Fabricator (940)# trinket1=,id=151963,bonus_id=3610/1482/3336## Beguiler's Talisman (860)# trinket1=,id=147275,bonus_id=605/1808/3574/1652/3336";
 
-        let dirtyTrinkets = this.trinketList.value.toString().replace(/\r?\n/g, '');
+        //let dirtyTrinkets = this.trinketList.value.toString().replace(/\r?\n/g, '');
 
         let splitTrinkets = dirtyTrinkets.split('#');
 
@@ -370,11 +371,20 @@ class characterTrinkets {
 
         let trinketVariations = toMatrix(dirtyTrinketVariations, 3);
 
-        console.log(trinketVariations);
+        //console.log(trinketVariations);
 
-        for(let i=0; trinketVariations > i; ++i){
-            
+        let trinketString = '';
+
+        for(let i=0; trinketVariations.length > i; ++i){
+            trinketString += trinketVariations[i][0] + '\n';
+            trinketString += trinketVariations[i][1] + '\n';
+            trinketString += trinketVariations[i][2] + '\n';
+            trinketString += '\n';
         }
+
+        console.log(trinketString);
+
+        this.trinketString.innerHTML = trinketString;
 
     }
 
