@@ -166,14 +166,14 @@ const RAID_TOS_ITEMS = [
     ]}
 ];
 
-function getBossItems(boss, id) {
+function getBossItems(boss) {
     for (let i in RAID_TOS_ITEMS) {
 
         let bossId = RAID_TOS_ITEMS[i].id,
             bossItems = RAID_TOS_ITEMS[i].items;
         
         if(boss === bossId) {
-            console.log(bossItems);
+            return bossItems;
         }
 
     }
@@ -228,7 +228,7 @@ function createRowItem(item) {
                     // Set src and alt text for the image
                     itemContent.IMAGE.setAttribute(
                         "src",
-                        `http://media.blizzard.com/wow/icons/36/${itemData.IMAGE}.jpg`
+                        `https://wow.zamimg.com/images/wow/icons/large/${itemData.IMAGE}.jpg`
                     );
 
                     // image.setAttribute("alt", item.name);
@@ -252,6 +252,7 @@ class bossItems {
 
     constructor(element) {
         this.element = element;
+        this.wrap = this.element.querySelector("#mainContent");
     }
 
 }
@@ -309,5 +310,80 @@ class characterItems {
     
 }
 
+// Organize Trinkets
+//////////////////////////////////////
+
+class characterTrinkets {
+
+    constructor(element) {
+        this.element = element;
+        this.formTrinkets = this.element.querySelector("#formTrinkets");
+        this.trinketList = this.element.querySelector("#simcTrinkets");
+        this.init();
+    }
+
+    getTrinkets(event) {
+
+        event.preventDefault();
+        
+        // Trinket String
+        //let dirtyTrinkets = "# Kil'jaeden's Burning Wish (1000)# trinket1=,id=144259,bonus_id=1811/3630## Engine of Eradication (915)# trinket1=,id=147015,bonus_id=3562/1497/3528## Royal Dagger Haft (895)# trinket1=,id=140791,bonus_id=3444/1492/3336## Animated Exoskeleton (920)# trinket1=,id=140789,bonus_id=3445/1517/3337## Darkmoon Deck: Immortality (900)# trinket1=,id=128711,bonus_id=689/601/679## Infernal Contract (905)# trinket1=,id=140807,bonus_id=3517/1502/3336## Horn of Valor (910)# trinket1=,id=133642,bonus_id=3573/1562/3528## Doomed Exarch's Memento (925)# trinket1=,id=153172,bonus_id=41/3573/1517/3337## Beguiler's Talisman (910)# trinket1=,id=147275,bonus_id=604/3573/3159/3528## Vial of Ceaseless Toxins (910)# trinket1=,id=147011,bonus_id=3573/1492/3528## Beguiler's Talisman (915)# trinket1=,id=147275,bonus_id=607/3573/3164/3336## Forgefiend's Fabricator (940)# trinket1=,id=151963,bonus_id=3610/1482/3336## Beguiler's Talisman (860)# trinket1=,id=147275,bonus_id=605/1808/3574/1652/3336";
+
+        let dirtyTrinkets = this.trinketList.value.toString().replace(/\r?\n/g, '');
+
+        let splitTrinkets = dirtyTrinkets.split('#');
+
+        let trinkets = splitTrinkets.filter(trinket => trinket.length > 0),
+            cleanTrinkets = trinkets.map(trinket => trinket.trim());
+
+        //console.log(cleanTrinkets);
+
+        const toMatrix = (arr, width) => 
+            arr.reduce((rows, key, index) => (index % width == 0 ? rows.push([key]) 
+            : rows[rows.length-1].push(key)) && rows, []);
+
+        let allTrinkets = toMatrix(cleanTrinkets, 2);
+
+        //console.log(allTrinkets);
+        let trinketStats = [];
+        let trinketNames = [];
+        for(let i=0; allTrinkets.length > i; ++i){
+            trinketStats.push(allTrinkets[i][1]);
+            trinketNames.push(allTrinkets[i][0].replace(/ /g, '_'));
+        }
+
+        //console.log(trinketStats);
+        //console.log(trinketNames);
+
+        let dirtyTrinketVariations = [];
+        for(let i=0; trinketStats.length > i; ++i) {
+            for(let j=0; trinketStats.length > j; ++j) {
+                if(trinketStats[i] != trinketStats[j]){
+                    dirtyTrinketVariations.push(trinketStats[i]);
+                    dirtyTrinketVariations.push(trinketStats[j].replace('trinket1', 'trinket2'));
+                    dirtyTrinketVariations.push('name=' + trinketNames[i].concat('_', trinketNames[j]));
+                }
+            }
+        }
+
+        //console.log(dirtyTrinketVariations);
+
+        let trinketVariations = toMatrix(dirtyTrinketVariations, 3);
+
+        console.log(trinketVariations);
+
+        for(let i=0; trinketVariations > i; ++i){
+            
+        }
+
+    }
+
+    init() {
+        this.formTrinkets.addEventListener("submit", this.getTrinkets.bind(this));
+    }
+
+}
+
 const app = document.querySelector(".app");
 new characterItems(app);
+new characterTrinkets(app);
