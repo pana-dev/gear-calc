@@ -313,29 +313,35 @@ class characterItems {
 // Organize Trinkets
 //////////////////////////////////////
 
-class characterTrinkets {
+class characterGear {
 
     constructor(element) {
         this.element = element;
-        this.formTrinkets = this.element.querySelector("#formTrinkets");
-        this.trinketList = this.element.querySelector("#simcTrinkets");
+        this.formSimcGear = this.element.querySelector("#formSimcGear");
+        this.gearList = this.element.querySelector("#simcGear");
         this.trinketString = this.element.querySelector("#trinketString");
         this.init();
     }
 
-    getTrinkets(event) {
+    getGear(event) {
 
         event.preventDefault();
         
         // Trinket String
-        let dirtyTrinkets = "# Kil'jaeden's Burning Wish (1000)# trinket1=,id=144259,bonus_id=1811/3630## Engine of Eradication (915)# trinket1=,id=147015,bonus_id=3562/1497/3528## Royal Dagger Haft (895)# trinket1=,id=140791,bonus_id=3444/1492/3336## Animated Exoskeleton (920)# trinket1=,id=140789,bonus_id=3445/1517/3337## Darkmoon Deck: Immortality (900)# trinket1=,id=128711,bonus_id=689/601/679## Infernal Contract (905)# trinket1=,id=140807,bonus_id=3517/1502/3336## Horn of Valor (910)# trinket1=,id=133642,bonus_id=3573/1562/3528## Doomed Exarch's Memento (925)# trinket1=,id=153172,bonus_id=41/3573/1517/3337## Beguiler's Talisman (910)# trinket1=,id=147275,bonus_id=604/3573/3159/3528## Vial of Ceaseless Toxins (910)# trinket1=,id=147011,bonus_id=3573/1492/3528## Beguiler's Talisman (915)# trinket1=,id=147275,bonus_id=607/3573/3164/3336## Forgefiend's Fabricator (940)# trinket1=,id=151963,bonus_id=3610/1482/3336## Beguiler's Talisman (860)# trinket1=,id=147275,bonus_id=605/1808/3574/1652/3336";
+        //let dirtyTrinkets = "# Kil'jaeden's Burning Wish (1000)# trinket1=,id=144259,bonus_id=1811/3630## Engine of Eradication (915)# trinket1=,id=147015,bonus_id=3562/1497/3528## Royal Dagger Haft (895)# trinket1=,id=140791,bonus_id=3444/1492/3336## Animated Exoskeleton (920)# trinket1=,id=140789,bonus_id=3445/1517/3337## Darkmoon Deck: Immortality (900)# trinket1=,id=128711,bonus_id=689/601/679## Infernal Contract (905)# trinket1=,id=140807,bonus_id=3517/1502/3336## Horn of Valor (910)# trinket1=,id=133642,bonus_id=3573/1562/3528## Doomed Exarch's Memento (925)# trinket1=,id=153172,bonus_id=41/3573/1517/3337## Beguiler's Talisman (910)# trinket1=,id=147275,bonus_id=604/3573/3159/3528## Vial of Ceaseless Toxins (910)# trinket1=,id=147011,bonus_id=3573/1492/3528## Beguiler's Talisman (915)# trinket1=,id=147275,bonus_id=607/3573/3164/3336## Forgefiend's Fabricator (940)# trinket1=,id=151963,bonus_id=3610/1482/3336## Beguiler's Talisman (860)# trinket1=,id=147275,bonus_id=605/1808/3574/1652/3336";
 
-        //let dirtyTrinkets = this.trinketList.value.toString().replace(/\r?\n/g, '');
+        let dirtySimc = this.gearList.value.toString();
 
-        let splitTrinkets = dirtyTrinkets.split('#');
+        //console.log(dirtySimc);
 
-        let trinkets = splitTrinkets.filter(trinket => trinket.length > 0),
-            cleanTrinkets = trinkets.map(trinket => trinket.trim());
+        let dirtyGear = dirtySimc.substring(dirtySimc.indexOf("### Gear from Bags") + 18, dirtySimc.length).replace(/\r?\n/g, '');
+
+        //console.log(dirtyGear);
+
+        let splitGear = dirtyGear.split('#');
+
+        let bagGear = splitGear.filter(gear => gear.length > 0),
+            cleanGear = bagGear.map(gear => gear.trim());
 
         //console.log(cleanTrinkets);
 
@@ -343,18 +349,31 @@ class characterTrinkets {
             arr.reduce((rows, key, index) => (index % width == 0 ? rows.push([key]) 
             : rows[rows.length-1].push(key)) && rows, []);
 
-        let allTrinkets = toMatrix(cleanTrinkets, 2);
+        let allGear = toMatrix(cleanGear, 2);
 
-        //console.log(allTrinkets);
-        let trinketStats = [];
-        let trinketNames = [];
-        for(let i=0; allTrinkets.length > i; ++i){
-            trinketStats.push(allTrinkets[i][1]);
-            trinketNames.push(allTrinkets[i][0].replace(/ /g, '_'));
+        //console.log(allGear);
+        let gearStats = [];
+        let gearNames = [];
+        for(let i=0; allGear.length > i; ++i){
+            gearStats.push(allGear[i][1]);
+            gearNames.push(allGear[i][0].replace(/ /g, '_'));
         }
 
-        //console.log(trinketStats);
-        //console.log(trinketNames);
+        console.log(gearStats);
+        console.log(gearNames);
+
+        let gearHead = [],
+            gearNeck = [],
+            gearShoulder = [],
+            gearBack = [],
+            gearChest = [],
+            gearWrist = [],
+            gearHands = [],
+            gearWaist = [],
+            gearLegs = [],
+            gearFeet = [],
+            gearFinger = [],
+            gearTrinket = [];
 
         let dirtyTrinketVariations = [];
         for(let i=0; trinketStats.length > i; ++i) {
@@ -382,18 +401,18 @@ class characterTrinkets {
             trinketString += '\n';
         }
 
-        console.log(trinketString);
+        //console.log(trinketString);
 
-        this.trinketString.innerHTML = trinketString;
+        //this.trinketString.innerHTML = trinketString;
 
     }
 
     init() {
-        this.formTrinkets.addEventListener("submit", this.getTrinkets.bind(this));
+        this.formSimcGear.addEventListener("submit", this.getGear.bind(this));
     }
 
 }
 
 const app = document.querySelector(".app");
 new characterItems(app);
-new characterTrinkets(app);
+new characterGear(app);
