@@ -1,0 +1,159 @@
+# SimC Addon 1.9.1
+
+demonhunter="Datstick"
+level=110
+race=blood_elf
+region=us
+server=bleeding_hollow
+role=attack
+professions=leatherworking=1/skinning=217
+talents=2221321
+spec=havoc
+artifact=3:0:0:0:0:1330:1:1362:1:1016:1:1015:1:1014:1:1013:1:1493:4:1494:1:1495:1:1496:23:1012:1:1011:1:1010:1:1008:4:1007:4:1006:4:1005:4:1004:4:1630:1:1003:4:1002:4:1001:4:1000:4
+crucible=1739:1777:1006/1739:1780:1001/1739:1778
+
+head=,id=147130,bonus_id=3562/1497/3528
+neck=,id=151966,enchant_id=5437,bonus_id=3611/1492/3336
+shoulder=,id=147132,bonus_id=3562/1502/3336
+back=,id=147128,enchant_id=5435,bonus_id=3562/1497/3528
+chest=,id=152358,bonus_id=3614/1487/3337
+wrist=,id=152414,bonus_id=3610/1472/3528
+hands=,id=150965,gem_id=151580,bonus_id=3573/1808/42/1577/3336
+waist=,id=133976,bonus_id=3529/1811/3630
+legs=,id=147131,bonus_id=3561/1497/3337
+feet=,id=151981,bonus_id=3610/1472/3528
+finger1=,id=152626,enchant_id=5427,gem_id=151580,bonus_id=1811/3630
+finger2=,id=134528,enchant_id=5427,bonus_id=3536/1627/3337
+trinket1=,id=151964,bonus_id=3613/1462/3336
+trinket2=,id=154174,bonus_id=3985/3986
+main_hand=,id=127829,gem_id=152032/136719/155848,bonus_id=719,relic_id=3610:1472:3528/3536:1612:3337/3610:1482:3528
+off_hand=,id=127830
+
+### Gear from Bags
+#
+# Vintage Suramar Nobility Hat (905)
+# head=,id=140901,bonus_id=3445/1502/3336
+#
+# Gaze of Fleeting Hours (885)
+# head=,id=137415,bonus_id=1727/1537/3528
+#
+# Steelgazer Hide Hood (935)
+# head=,id=134152,bonus_id=3535/1597/3528
+#
+# Collar of Null-Flame (930)
+# neck=,id=151973,enchant_id=5437,bonus_id=3610/1472/3528
+#
+# Vulcanarcore Pendant (915)
+# neck=,id=151965,bonus_id=3613/1457/3528
+#
+# Choker of Barbed Reins (915)
+# neck=,id=142174,enchant_id=5437,gem_id=151580,bonus_id=3413/1808/1532/3337
+#
+# Spaulders of the Relentless Tracker (915)
+# shoulder=,id=151989,bonus_id=3613/1457/3528
+#
+# Fel-Spike Shoulderpads (935)
+# shoulder=,id=152363,bonus_id=3614/1477/3336
+#
+# Spaulders of the Relentless Tracker (945)
+# shoulder=,id=151989,gem_id=151580,bonus_id=3611/1808/1487/3528
+#
+# Demonic Gladiator's Demonthread Cloak (910)
+# back=,id=148897,bonus_id=3583/1706/1542/3528
+#
+# Cloak of the Burning Vanguard (930)
+# back=,id=151937,bonus_id=3610/1472/3528
+#
+# Greatcloak of the Dark Pantheon (930)
+# back=,id=152062,bonus_id=3610/1472/3528
+#
+# Achor, the Eternal Hunger (1000)
+# chest=,id=137014,bonus_id=3459/3630
+#
+# Vest of Waning Life (925)
+# chest=,id=151982,bonus_id=3613/41/1457/3528
+#
+# Felreaper Vest (930)
+# chest=,id=152118,bonus_id=3610/1472/3528
+#
+# Bracers of Diabolic Fury (930)
+# wrist=,id=152365,bonus_id=3614/1472/3528
+#
+# Mo'arg Bionic Stabilizers (1000)
+# wrist=,id=137090,bonus_id=3459/3630
+#
+# Bracers of Wanton Morality (920)
+# wrist=,id=152414,bonus_id=3613/1462/3336
+#
+# Moonfire Stranglers (900)
+# hands=,id=147031,bonus_id=3561/42/1482/3528
+#
+# Spirit of the Darkness Flame (1000)
+# hands=,id=144292,bonus_id=3529/1811/3630
+#
+# Belt of Fractured Sanity (930)
+# waist=,id=151991,bonus_id=3610/1472/3528
+#
+# Caustic Titanspite Legguards (915)
+# legs=,id=152282,bonus_id=3613/1457/3528
+#
+# Bloodclaw Leggings (865)
+# legs=,id=134449,bonus_id=1726/1517/3528
+#
+# Loramus Thalipedes' Sacrifice (1000)
+# feet=,id=137022,bonus_id=1811/3630
+#
+# Depraved Machinist's Footpads (915)
+# feet=,id=152412,bonus_id=3613/1457/3528
+#
+# Treads of Violent Intrusion (920)
+# feet=,id=147424,bonus_id=3562/1502/3336
+#
+# Yathae's Thumb Ring (925)
+# finger1=,id=147021,enchant_id=5427,bonus_id=3562/1507/3336
+#
+# Kil'jaeden's Burning Wish (1000)
+# trinket1=,id=144259,bonus_id=1811/3630
+#
+# Engine of Eradication (915)
+# trinket1=,id=147015,bonus_id=3562/1497/3528
+#
+# Royal Dagger Haft (895)
+# trinket1=,id=140791,bonus_id=3444/1492/3336
+#
+# Animated Exoskeleton (920)
+# trinket1=,id=140789,bonus_id=3445/1517/3337
+#
+# Darkmoon Deck: Immortality (900)
+# trinket1=,id=128711,bonus_id=689/601/679
+#
+# Infernal Contract (905)
+# trinket1=,id=140807,bonus_id=3517/1502/3336
+#
+# Horn of Valor (910)
+# trinket1=,id=133642,bonus_id=3573/1562/3528
+#
+# Doomed Exarch's Memento (925)
+# trinket1=,id=153172,bonus_id=41/3573/1517/3337
+#
+# Beguiler's Talisman (910)
+# trinket1=,id=147275,bonus_id=604/3573/3159/3528
+#
+# Vial of Ceaseless Toxins (910)
+# trinket1=,id=147011,bonus_id=3573/1492/3528
+#
+# Beguiler's Talisman (915)
+# trinket1=,id=147275,bonus_id=607/3573/3164/3336
+#
+# Forgefiend's Fabricator (940)
+# trinket1=,id=151963,bonus_id=3610/1482/3336
+#
+# Beguiler's Talisman (860)
+# trinket1=,id=147275,bonus_id=605/1808/3574/1652/3336
+#
+# Skinning Knife (4)
+# main_hand=,id=7005
+#
+# Skinning Knife (4)
+# off_hand=,id=7005
+#

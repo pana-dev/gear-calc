@@ -359,8 +359,8 @@ class characterGear {
             gearNames.push(allGear[i][0].replace(/ /g, '_'));
         }
 
-        console.log(gearStats);
-        console.log(gearNames);
+        //console.log(gearStats);
+        //console.log(gearNames);
 
         let gearHead = [],
             gearNeck = [],
@@ -375,18 +375,44 @@ class characterGear {
             gearFinger = [],
             gearTrinket = [];
 
+        for(let i=0; gearStats.length > i; ++i){
+            if(gearStats[i].match("head")){
+                gearHead.push([gearNames[i], gearStats[i]]);
+            } else if (gearStats[i].match("neck")) {
+                gearNeck.push([gearNames[i], gearStats[i]]);
+            } else if (gearStats[i].match("shoulder")) {
+                gearShoulder.push([gearNames[i], gearStats[i]]);
+            } else if (gearStats[i].match("back")) {
+                gearBack.push([gearNames[i], gearStats[i]]);
+            } else if (gearStats[i].match("chest")) {
+                gearChest.push([gearNames[i], gearStats[i]]);
+            } else if (gearStats[i].match("wrist")) {
+                gearWrist.push([gearNames[i], gearStats[i]]);
+            } else if (gearStats[i].match("hands")) {
+                gearHands.push([gearNames[i], gearStats[i]]);
+            } else if (gearStats[i].match("waist")) {
+                gearWaist.push([gearNames[i], gearStats[i]]);
+            } else if (gearStats[i].match("legs")) {
+                gearLegs.push([gearNames[i], gearStats[i]]);
+            } else if (gearStats[i].match("feet")) {
+                gearFeet.push([gearNames[i], gearStats[i]]);
+            } else if (gearStats[i].match("finger")) {
+                gearFinger.push([gearNames[i], gearStats[i]]);
+            } else if (gearStats[i].match("trinket")) {
+                gearTrinket.push([gearNames[i], gearStats[i]]);
+            }
+        }
+
         let dirtyTrinketVariations = [];
-        for(let i=0; trinketStats.length > i; ++i) {
-            for(let j=0; trinketStats.length > j; ++j) {
-                if(trinketStats[i] != trinketStats[j]){
-                    dirtyTrinketVariations.push(trinketStats[i]);
-                    dirtyTrinketVariations.push(trinketStats[j].replace('trinket1', 'trinket2'));
-                    dirtyTrinketVariations.push('name=' + trinketNames[i].concat('_', trinketNames[j]));
+        for(let i=0; gearTrinket.length > i; ++i) {
+            for(let j=0; gearTrinket.length > j; ++j) {
+                if(gearTrinket[i][1] != gearTrinket[j][1]){
+                    dirtyTrinketVariations.push([gearTrinket[i][1], gearTrinket[j][1].replace('trinket1', 'trinket2'), 'name=' + gearTrinket[i][0].concat('_', gearTrinket[j][0])]);
                 }
             }
         }
 
-        //console.log(dirtyTrinketVariations);
+        console.log(dirtyTrinketVariations);
 
         let trinketVariations = toMatrix(dirtyTrinketVariations, 3);
 
